@@ -1,0 +1,170 @@
+/* REGISTER.CSS - Registration panel */
+
+.register-panel,
+.event-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  z-index: var(--z-panel);
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.6s var(--ease-out-expo);
+  padding: 2rem;
+}
+
+.register-panel.open,
+.event-panel.open {
+  transform: translateY(0);
+}
+
+#register-panel-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.reg-header {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.reg-header h1 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.reg-sub {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
+.reg-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+  border: none;
+  width: 100%;
+}
+
+.reg-guidelines {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+}
+
+.reg-guidelines li {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+}
+
+
+
+.reg-note {
+  background: var(--blue-faint);
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.reg-note strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.reg-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.reg-cta h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.reg-cta p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.reg-form-btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  padding: 1.25rem 2.5rem;
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 2px;
+  font-size: 1rem;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+.reg-form-btn:hover {
+  background: var(--blue);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 85, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .reg-form-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #register-panel-inner {
+    padding: 3rem 1.5rem;
+  }
+
+  .reg-header h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .reg-guidelines li {
+    padding-left: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .reg-cta h2 {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  }
+
+  .reg-form-btn {
+    width: 100%;
+    min-width: auto;
+    padding: 1rem 1.5rem;
+  }
+}

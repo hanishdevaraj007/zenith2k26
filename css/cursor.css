@@ -1,0 +1,95 @@
+/* CURSOR.CSS - Custom cursor styling */
+
+#cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: var(--blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  will-change: transform, opacity;
+}
+
+#cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+  will-change: transform, width, height;
+}
+
+#cursor-trail-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: calc(var(--z-cursor) - 1);
+  mix-blend-mode: multiply;
+}
+
+body.is-mobile #cursor-dot,
+body.is-mobile #cursor-ring,
+body.is-mobile #cursor-trail-canvas {
+  display: none;
+}
+
+/* Show cursor when visible */
+#cursor-dot.visible {
+  opacity: 1;
+}
+
+#cursor-ring.visible {
+  opacity: 1;
+}
+
+/* Hide cursor when leaving window */
+#cursor-dot.hide {
+  opacity: 0;
+}
+
+#cursor-ring.hide {
+  opacity: 0;
+}
+
+/* Visual feedback when hovering over interactive elements */
+#cursor-ring.hover {
+  width: 56px;
+  height: 56px;
+  background: rgba(0, 85, 255, 0.1);
+  border-color: var(--blue);
+}
+
+#cursor-dot.hover {
+  opacity: 0;
+}
+
+/* Scale dot on mousedown */
+#cursor-dot.active {
+  transform: translate(-50%, -50%) scale(0.4);
+}
+
+/* Styles for hoverable elements */
+a,
+button,
+.event-card,
+.member-card,
+.hoverable {
+  cursor: none;
+  position: relative;
+}

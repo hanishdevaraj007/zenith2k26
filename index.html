@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZENITH 2K26 — KGiSL Institute of Technology</title>
+  <meta name="description" content="ZENITH 2K26 - A national-level technical symposium by the Departments of Information Technology, Artificial Intelligence & Machine Learning, and Cyber Security at KGiSL Institute of Technology, Coimbatore.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Syne+Mono&display=swap" rel="stylesheet">
+
+  <!-- GSAP 3.12.5 from jsdelivr -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
+
+  <!-- Lenis for smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Three.js r128 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/cursor.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/events.css">
+  <link rel="stylesheet" href="css/team.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/register.css">
+  <link rel="stylesheet" href="css/transitions.css">
+</head>
+<body>
+
+  <!-- CUSTOM CURSOR -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <canvas id="cursor-trail-canvas"></canvas>
+
+  <!-- PAGE WIPE OVERLAY -->
+  <div id="page-wipe">
+    <span class="wipe-wordmark">ZENITH</span>
+  </div>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-wordmark">ZENITH <span>2K26</span></div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar"></div>
+      </div>
+      <div class="loader-percent">0%</div>
+    </div>
+    <div class="loader-half loader-top"></div>
+    <div class="loader-half loader-bottom"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo" data-nav>ZENITH <span>2K26</span></a>
+    <ul class="nav-links">
+      <li><a href="#about" data-nav>About</a></li>
+      <li><a href="#tech" data-nav>Tech</a></li>
+      <li><a href="#nontech" data-nav>Non-Tech</a></li>
+      <li><a href="#fun" data-nav>Fun</a></li>
+      <li><a href="#team" data-nav>Team</a></li>
+    </ul>
+    <button class="nav-register" id="nav-register-btn">Register →</button>
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div id="mobile-nav">
+    <button id="mobile-close">✕</button>
+    <ul>
+      <li><a href="#about" data-nav-mobile>About</a></li>
+      <li><a href="#tech" data-nav-mobile>Tech</a></li>
+      <li><a href="#nontech" data-nav-mobile>Non-Tech</a></li>
+      <li><a href="#fun" data-nav-mobile>Fun</a></li>
+      <li><a href="#team" data-nav-mobile>Team</a></li>
+      <li><a href="#register" class="mobile-register" data-nav-mobile>Register</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="section-hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-bg">
+      <div class="hero-gradient g1"></div>
+      <div class="hero-gradient g2"></div>
+      <div class="hero-shape s1"></div>
+      <div class="hero-shape s2"></div>
+      <div class="hero-shape s3"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-label">NATIONAL LEVEL SYMPOSIUM — 2026</p>
+      <h1 class="hero-title">ZENITH</h1>
+      <h2 class="hero-sub">2K26</h2>
+      <p class="hero-tagline">Where brilliance meets its peak.</p>
+      <button class="hero-cta btn-crack" id="hero-cta">Register Now →</button>
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line">
+        <div class="scroll-dot"></div>
+      </div>
+      <span class="scroll-label">SCROLL</span>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section-about">
+    <div class="section-index">01</div>
+    <div class="about-inner">
+      <p class="section-label">— ABOUT THE EVENT</p>
+      <h2 class="about-headline">
+        <span class="clip-word">A symposium</span>
+        <span class="clip-word accent">beyond limits.</span>
+      </h2>
+      <div class="about-body">
+        <p>ZENITH 2K26 is a national-level technical symposium that brings together the brightest minds from across the country. Organized by the Departments of Information Technology, Artificial Intelligence & Machine Learning, and Cyber Security at KGiSL Institute of Technology, this event celebrates innovation, technical excellence, and creative problem-solving.</p>
+        <p>With a diverse range of technical and non-technical events, ZENITH 2K26 offers participants an opportunity to showcase their skills, compete at the highest level, and network with industry professionals and fellow enthusiasts. Join us as we push the boundaries of what's possible.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="12">0</span>
+          <span class="stat-label">Events</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="500">0</span>
+          <span class="stat-label">Participants Expected</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Departments</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH EVENTS SECTION -->
+  <section id="tech" class="section-events section-tech">
+    <div class="section-index">02</div>
+    <div class="events-header container">
+      <p class="section-label">— TECHNICAL EVENTS</p>
+      <h2 class="events-title">Push the <span class="accent">boundaries.</span></h2>
+    </div>
+    <div class="events-grid" id="tech-grid"></div>
+  </section>
+
+  <!-- NON-TECH EVENTS SECTION -->
+  <section id="nontech" class="section-events section-nontech">
+    <div class="section-index">03</div>
+    <div class="events-header container">
+      <p class="section-label">— NON-TECHNICAL EVENTS</p>
+      <h2 class="events-title">Think <span class="accent">differently.</span></h2>
+    </div>
+    <div class="events-grid" id="nontech-grid"></div>
+  </section>
+
+  <!-- FUN EVENTS SECTION -->
+  <section id="fun" class="section-events section-fun">
+    <div class="section-index">04</div>
+    <div class="events-header container">
+      <p class="section-label">— FUN EVENTS</p>
+      <h2 class="events-title">Play <span class="accent">hard.</span></h2>
+    </div>
+    <div class="events-grid" id="fun-grid"></div>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section id="team" class="section-team">
+    <div class="section-index">05</div>
+    <div class="team-header container">
+      <p class="section-label">— THE TEAM</p>
+      <h2 class="team-title">The minds <span class="accent">behind it.</span></h2>
+    </div>
+    <div id="team-container"></div>
+  </section>
+
+  <!-- EVENT DETAIL PANEL -->
+  <div id="event-panel" class="event-panel">
+    <button class="panel-back btn-crack" id="panel-back">← Back</button>
+    <div class="event-panel-inner" id="event-panel-inner"></div>
+  </div>
+
+  <!-- REGISTER PANEL -->
+  <div id="register-panel" class="event-panel register-panel">
+    <button class="panel-back btn-crack" id="register-back">← Back</button>
+    <div class="event-panel-inner" id="register-panel-inner">
+      <div class="reg-header">
+        <h1>Registration Guidelines</h1>
+        <p class="reg-sub">Read before you register. Every rule matters.</p>
+        <hr class="reg-divider">
+      </div>
+      <ol class="reg-guidelines">
+        <li>To participate in ZENITH 2K26, you must be a currently enrolled student at any recognized institution in India.</li>
+        <li>Team events require a minimum of 2 and a maximum of 5 members per team. Only one registration per team is needed.</li>
+        <li>Participants can register for multiple events, but must adhere to the event schedule and avoid overlapping registrations.</li>
+        <li>All registrations are final and non-refundable. However, team compositions can be modified up to 24 hours before the event.</li>
+        <li>Participants must bring a valid ID proof (student ID, Aadhar, or passport) to the venue during the events.</li>
+        <li>In case of any disputes or clarifications, participants should contact the event coordinators. Final decisions of the organizers will be binding.</li>
+        <li>Participants are expected to maintain ethical standards and sportsmanship throughout the event. Any violation may result in disqualification.</li>
+        <li>The organizing committee reserves the right to modify event rules, schedule, or prizes with prior notification to all participants.</li>
+      </ol>
+      <div class="reg-note">
+        <strong>Important:</strong> By registering for ZENITH 2K26, you agree to abide by all rules and guidelines. Ensure you have read and understood the specific requirements for each event before registration. For any queries, reach out to us at zenith@kgist.edu.in or follow us on Instagram for the latest updates.
+      </div>
+      <div class="reg-cta">
+        <h2>Ready to Register?</h2>
+        <p>Open the official registration form and secure your spot in ZENITH 2K26.</p>
+        <button class="reg-form-btn btn-crack" id="reg-form-btn">Open Registration Form →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="section-footer">
+    <div class="footer-bg-word">ZENITH 2K26</div>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-logo">ZENITH <span>2K26</span></div>
+        <p class="footer-college">KGiSL Institute of Technology</p>
+        <p class="footer-dept">Dept. of IT · AIML · CYS</p>
+      </div>
+      <div class="footer-center">
+        <p class="footer-nav-label">Quick Links</p>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#tech">Tech Events</a></li>
+          <li><a href="#nontech">Non-Tech Events</a></li>
+          <li><a href="#fun">Fun Events</a></li>
+          <li><a href="#team">Team</a></li>
+        </ul>
+      </div>
+      <div class="footer-right">
+        <p class="footer-nav-label">Connect</p>
+        <a href="https://instagram.com/zenith2k26" target="_blank" class="footer-social">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4c0 3.2-2.6 5.8-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2m-.3 2C5.3 4 4 5.3 4 7.5v9C4 18.7 5.3 20 7.5 20h9c2.2 0 3.5-1.3 3.5-3.5v-9C20 5.3 18.7 4 16.5 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6m5.5-3.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+          </svg>
+          Instagram
+        </a>
+        <a href="mailto:zenith@kgist.edu.in" id="footer-email">zenith@kgist.edu.in</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ZENITH. All rights reserved. Organized by KGiSL Institute of Technology, Coimbatore.</p>
+    </div>
+  </footer>
+
+  <!-- DATA FILES -->
+  <script src="js/data/siteConfig.js"></script>
+  <script src="js/data/techEvents.js"></script>
+  <script src="js/data/nonTechEvents.js"></script>
+  <script src="js/data/funEvents.js"></script>
+  <script src="js/data/teamData.js"></script>
+
+  <!-- JS MODULES -->
+  <script src="js/sound.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/cursorTrail.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/transitions.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/buttonCrack.js"></script>
+  <script src="js/registerPage.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

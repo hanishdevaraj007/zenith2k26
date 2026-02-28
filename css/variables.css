@@ -1,0 +1,44 @@
+:root {
+  /* Colors */
+  --blue: #0055FF;
+  --blue-light: #3377FF;
+  --blue-glow: rgba(0, 85, 255, 0.15);
+  --blue-faint: rgba(0, 85, 255, 0.06);
+  --white: #ffffff;
+  --near-black: #080810;
+  --text-primary: #0a0a14;
+  --text-secondary: #555566;
+  --text-muted: #99aabb;
+  --border: rgba(0, 85, 255, 0.12);
+
+  /* Section tints */
+  --tint-tech: rgba(0, 85, 255, 0.03);
+  --tint-nontech: rgba(88, 28, 220, 0.03);
+  --tint-fun: rgba(16, 185, 129, 0.03);
+
+  /* Typography */
+  --font-heading: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'Syne Mono', monospace;
+
+  /* Layout */
+  --section-pad: clamp(80px, 10vw, 140px);
+  --container: min(1280px, 92vw);
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Z-index layers */
+  --z-navbar: 100;
+  --z-wipe: 200;
+  --z-panel: 300;
+  --z-loader: 400;
+  --z-cursor: 9999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

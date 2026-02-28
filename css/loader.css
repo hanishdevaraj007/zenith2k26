@@ -1,0 +1,94 @@
+/* LOADER.CSS - Full-page loading animation */
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+  overflow: hidden;
+  background: var(--near-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 2;
+}
+
+.loader-wordmark {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: white;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.loader-wordmark span {
+  color: var(--blue);
+}
+
+.loader-bar-wrap {
+  width: min(400px, 80vw);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  border-radius: 1px;
+}
+
+.loader-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--blue);
+  box-shadow: 0 0 12px var(--blue), 0 0 24px rgba(0, 85, 255, 0.5);
+  transition: width 0.1s ease-out;
+  border-radius: 1px;
+}
+
+.loader-percent {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.loader-half {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: var(--near-black);
+  z-index: 3;
+  left: 0;
+}
+
+.loader-top {
+  top: 0;
+}
+
+.loader-bottom {
+  bottom: 0;
+}
+
+/* Animation keyframes */
+@keyframes loader-pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px var(--blue), 0 0 24px rgba(0, 85, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 24px var(--blue), 0 0 48px rgba(0, 85, 255, 0.7);
+  }
+}
+
+.loader-bar.active {
+  animation: loader-pulse 1s ease-in-out infinite;
+}
+

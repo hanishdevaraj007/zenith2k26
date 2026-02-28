@@ -1,0 +1,247 @@
+/* TEAM.CSS - Team member grid layout */
+
+.section-team {
+  position: relative;
+  background: var(--white);
+  padding: var(--section-pad) 0;
+}
+
+.team-header {
+  max-width: var(--container);
+  margin: 0 auto 3rem auto;
+  padding: 0 var(--section-pad);
+}
+
+.team-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+#team-container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--section-pad);
+}
+
+.team-tier {
+  margin-bottom: 5rem;
+}
+
+.tier-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.tier-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+.tier-divider {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.tier-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+/* Principal tier - single centered card */
+.team-tier:first-child .tier-grid {
+  max-width: 200px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+.team-tier:nth-child(2) .tier-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.team-tier:nth-child(3) .tier-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.team-tier:nth-child(4) .tier-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.team-tier:nth-child(5) .tier-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.team-tier:nth-child(6) .tier-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* Member card */
+.member-card {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.member-card:hover {
+  transform: translateY(-4px);
+}
+
+.member-photo-wrap {
+  position: relative;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.member-card:hover .member-photo-wrap {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.member-photo-inner {
+  perspective: 600px;
+}
+
+.member-photo-inner img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.member-photo-placeholder {
+  width: 100px;
+  height: 100px;
+  background: var(--blue-faint);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--blue);
+  border: 1px solid var(--border);
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+}
+
+.member-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+  position: relative;
+}
+
+.member-name::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.member-card:hover .member-name::after {
+  width: 100%;
+}
+
+.member-role {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.member-linkedin {
+  display: inline-flex;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.member-card:hover .member-linkedin {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.member-linkedin svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive grid columns */
+@media (max-width: 1024px) {
+  .team-tier:nth-child(5) .tier-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .team-tier:nth-child(6) .tier-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tier-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .tier-divider {
+    width: 100%;
+    max-width: 100px;
+  }
+
+  .team-tier:nth-child(2) .tier-grid,
+  .team-tier:nth-child(3) .tier-grid,
+  .team-tier:nth-child(4) .tier-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-tier:nth-child(5) .tier-grid,
+  .team-tier:nth-child(6) .tier-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .team-tier:nth-child(2) .tier-grid,
+  .team-tier:nth-child(3) .tier-grid,
+  .team-tier:nth-child(4) .tier-grid,
+  .team-tier:nth-child(5) .tier-grid,
+  .team-tier:nth-child(6) .tier-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .member-name {
+    font-size: 0.9rem;
+  }
+
+  .member-role {
+    font-size: 0.75rem;
+  }
+}

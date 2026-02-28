@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZENITH 2K26 - Debug</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: monospace; 
+      background: #000; 
+      color: #0f0; 
+      padding: 20px; 
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      line-height: 1.5;
+    }
+    h1 { color: #0ff; margin-bottom: 20px; }
+    .section { margin: 20px 0; padding: 10px; border: 1px solid #0f0; }
+    .success { color: #0f0; }
+    .error { color: #f00; }
+    .warning { color: #ff0; }
+    button { 
+      background: #0f0; 
+      color: #000; 
+      padding: 10px 20px; 
+      border: none; 
+      cursor: pointer; 
+      margin: 10px 0;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<h1>ZENITH 2K26 - System Debug Console</h1>
+
+<div class="section">
+  <h2>Environment Check</h2>
+  <div id="env-check"></div>
+</div>
+
+<div class="section">
+  <h2>DOM Status</h2>
+  <div id="dom-check"></div>
+</div>
+
+<div class="section">
+  <h2>Module Status</h2>
+  <div id="module-check"></div>
+</div>
+
+<div class="section">
+  <h2>Browser Console Log</h2>
+  <div id="console-log" style="background: #001; padding: 10px; height: 300px; overflow-y: auto; border: 1px solid #0f0;"></div>
+</div>
+
+<div class="section">
+  <button onclick="testLoader()">Test Loader</button>
+  <button onclick="loadMainPage()">Load Main Page</button>
+  <button onclick="location.reload()">Reload Page</button>
+</div>
+
+<script>
+// Capture console logs
+const logs = [];
+const originalLog = console.log;
+const originalError = console.error;
+const originalWarn = console.warn;
+
+console.log = function(...args) {
+  originalLog(...args);
+  logs.push('[LOG] ' + args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+  updateConsoleLog();
+};
+
+console.error = function(...args) {
+  originalError(...args);
+  logs.push('[ERROR] ' + args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+  updateConsoleLog();
+};
+
+console.warn = function(...args) {
+  originalWarn(...args);
+  logs.push('[WARN] ' + args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
+  updateConsoleLog();
+};
+
+function updateConsoleLog() {
+  const logDiv = document.getElementById('console-log');
+  logDiv.textContent = logs.join('\n');
+  logDiv.scrollTop = logDiv.scrollHeight;
+}
+
+// Check environment
+function checkEnvironment() {
+  const envDiv = document.getElementById('env-check');
+  envDiv.innerHTML = '';
+  
+  const checks = [
+    { name: 'window.gsap', value: typeof window.gsap !== 'undefined', expected: true },
+    { name: 'window.ScrollTrigger', value: typeof window.ScrollTrigger !== 'undefined', expected: true },
+    { name: 'window.SplitText', value: typeof window.SplitText !== 'undefined', expected: true },
+    { name: 'window.Lenis', value: typeof window.Lenis !== 'undefined', expected: true },
+    { name: 'window.THREE', value: typeof window.THREE !== 'undefined', expected: true },
+  ];
+  
+  checks.forEach(check => {
+    const status = check.value === check.expected ? 'success' : 'error';
+    envDiv.innerHTML += `<div class="${status}">✓ ${check.name}: ${check.value}</div>`;
+  });
+}
+
+// Check DOM
+function checkDOM() {
+  const domDiv = document.getElementById('dom-check');
+  domDiv.innerHTML = '';
+  
+  const elements = [
+    'loader', 'navbar', 'hero', 'about', 'tech', 'nontech', 'fun', 'team', 'footer',
+    'cursor-dot', 'cursor-ring', 'hero-canvas', 'page-wipe'
+  ];
+  
+  elements.forEach(id => {
+    const el = document.getElementById(id);
+    const status = el ? 'success' : 'error';
+    domDiv.innerHTML += `<div class="${status}">✓ #${id}: ${el ? 'found' : 'missing'}</div>`;
+  });
+}
+
+// Check modules
+function checkModules() {
+  const modDiv = document.getElementById('module-check');
+  modDiv.innerHTML = '';
+  
+  const modules = [
+    'SoundSystem', 'Cursor', 'CursorTrail', 'ParticleSystem', 'Navbar', 'Transitions',
+    'renderEventCards', 'renderTeam', 'ButtonCrack', 'RegisterPanel', 'Loader', 'Animations'
+  ];
+  
+  modules.forEach(name => {
+    const exists = window[name] !== undefined;
+    const status = exists ? 'success' : 'error';
+    modDiv.innerHTML += `<div class="${status}">✓ window.${name}: ${exists ? 'loaded' : 'missing'}</div>`;
+  });
+}
+
+// Test loader specifically
+function testLoader() {
+  if (window.Loader && typeof window.Loader.start === 'function') {
+    console.log('Starting loader test...');
+    window.Loader.start(() => {
+      console.log('Loader completed!');
+    });
+  } else {
+    console.error('Loader module not found!');
+  }
+}
+
+// Load main page
+function loadMainPage() {
+  console.log('Navigating to main page...');
+  location.href = '/';
+}
+
+// Run checks on page load
+window.addEventListener('load', () => {
+  console.log('Debug page loaded, running checks...');
+  checkEnvironment();
+  checkDOM();
+  checkModules();
+  console.log('Checks complete!');
+});
+
+// Run initial checks immediately
+setTimeout(() => {
+  checkEnvironment();
+  checkDOM();
+  checkModules();
+}, 100);
+</script>
+
+</body>
+</html>
