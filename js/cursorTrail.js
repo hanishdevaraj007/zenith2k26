@@ -135,7 +135,7 @@ window.CursorTrail = (function() {
     const maxDistance = 140;
     const minDistance = 80;
     const startTime = Date.now();
-    const zapDuration = 400;
+    const zapDuration = 200;
 
     function drawZaps() {
       const elapsed = Date.now() - startTime;
@@ -204,6 +204,7 @@ window.CursorTrail = (function() {
 
   return {
     init,
-    cleanup
+    cleanup,
+    triggerZap: zapBurst
   };
 })();

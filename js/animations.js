@@ -177,6 +177,34 @@ window.Animations = (function() {
     // Portal animations can be added here later if needed
   }
 
+  function initSectionTitles() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof SplitText === 'undefined') {
+      return;
+    }
+    var sections = document.querySelectorAll('section');
+    sections.forEach(function(sec) {
+      var title = sec.querySelector('h2, h1');
+      if (!title) return;
+      try {
+        var split = new SplitText(title, { type: 'words,chars' });
+        gsap.from(split.chars, {
+          opacity: 0,
+          y: 30,
+          stagger: 0.04,
+          duration: 0.6,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sec,
+            start: 'top 80%',
+            once: true
+          }
+        });
+      } catch (e) {
+        console.warn('initSectionTitles failed:', e);
+      }
+    });
+  }
+
   function heroEntry() {
     if (typeof gsap === 'undefined') {
       return;
@@ -215,6 +243,7 @@ window.Animations = (function() {
     initTeamAnimations: initTeamAnimations,
     initFooterObserver: initFooterObserver,
     initPortals: initPortals,
+    initSectionTitles: initSectionTitles,
     heroEntry: heroEntry
   };
 })();

@@ -195,6 +195,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (typeof window.Animations.initFooterObserver === 'function') {
         window.Animations.initFooterObserver();
       }
+      if (typeof window.Animations.initSectionTitles === 'function') {
+        window.Animations.initSectionTitles();
+      }
       console.log('Animations initialized');
 
       // About pin after slight delay

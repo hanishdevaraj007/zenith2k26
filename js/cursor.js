@@ -22,6 +22,8 @@ window.Cursor = (function() {
 
     dotEl = document.getElementById('cursor-dot');
     ringEl = document.getElementById('cursor-ring');
+    // always add electric animation class
+    if (ringEl) ringEl.classList.add('electric');
 
     if (!dotEl || !ringEl) return;
 
@@ -39,6 +41,8 @@ window.Cursor = (function() {
     document.addEventListener('mouseup', onMouseUp);
     window.addEventListener('mouseenter', onMouseEnter);
     window.addEventListener('mouseleave', onMouseLeave);
+    // ensure electric flicker remains active
+    if (ringEl) ringEl.classList.add('electric');
 
     // RAF loop for ring lerp
     updateRingPosition();
@@ -51,6 +55,12 @@ window.Cursor = (function() {
     if (dotEl && mouseInWindow) {
       dotEl.style.left = dotX + 'px';
       dotEl.style.top = dotY + 'px';
+    }
+
+    // continuous electric shock effect via zapBurst
+    if (window.CursorTrail && typeof window.CursorTrail.triggerZap === 'function') {
+      // call every time to simulate continuous electric discharge
+      window.CursorTrail.triggerZap(e.clientX, e.clientY);
     }
 
     checkHoverState(e.target);
